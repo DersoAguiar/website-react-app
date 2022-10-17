@@ -72,7 +72,7 @@ const Cart = ({cart, setCart, handleChange}) => {
             {cart.length !==0 ? <div className='flex justify-between'>
                         <p className='font-bold'>Total Price of your Cart</p>
                         <span className='font-bold'>R$ {price.toFixed(2)}</span>
-                    </div> : "Your cart is empty"}
+                    </div> : <p className='font-bold text-xl '>Ops, loks like your cart is empty!</p>}
                 
         </div>
   )
