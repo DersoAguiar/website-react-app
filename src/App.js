@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Cart from './components/Cart';
 import Category from './components/Category';
 import DisplayFood from './components/DisplayFood';
@@ -25,14 +25,22 @@ function App() {
       const arr = cart;
       arr[ind].amount += d;
 
-      if (arr[ind].amount === 0) return arr[ind].amount = 1;
+      if (arr[ind].amount === 0) arr[ind].amount = 1;
       setCart([...arr]);
     };
+
+    /* useEffect(() => {
+      const quantidadeTotal = cart.reduce(
+        (total, {amount}) => total + (Number(amount) || 0),
+        0
+      );
+      setCart(quantidadeTotal)
+    }, [cart]);*/
 
     
   return (
     <React.Fragment>
-      <Navbar setShow={setShow} size={cart.length}/>
+      <Navbar setShow={setShow} size={cart.length} handleClick={handleClick}/>
       { show ? <Hero /> : ''}
       { show ? <HeadlineCards /> : ''}
       { show ? <Food /> : ''}

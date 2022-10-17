@@ -1,19 +1,33 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { AiFillTag, AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai';
 import { BsFillCartFill, BsFillSaveFill } from 'react-icons/bs';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { MdFavorite, MdHelp } from 'react-icons/md';
 import { FaUserFriends, FaWallet } from 'react-icons/fa';
 
-const Navbar = ({setShow}) => {
-    const [nav, setNav] = useState(false)
+
+
+const Navbar = ({setShow, size}) => {
+    const [nav, setNav] = useState(false);
+    const [fix, setFixed] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setFixed(window.scrollY >= 400)
+                        
+        }
+        window.addEventListener('scroll', handleScroll)
+        return () => window.addEventListener('scroll', handleScroll)
+    }) 
 
 
   return (
-    <div className='max-w-[1640px] mx-auto flex justify-between items-center p-4'>
-        {/*Left Side*/}
-        <div className='flex items-center'>
-            <div 
+    <>    
+    <div    
+    className={`${fix ? 'bg-orange-400 max-w-[1640px] mx-auto flex justify-between items-center p-4 sticky top-0 z-50 ease-in-out duration-300'  : 'max-w-[1640px] mx-auto flex justify-between items-center p-4'}`}>
+        {/*Left Side*/} 
+        <div className='flex items-center'> 
+            <div             
             onClick={() => setNav(!nav)} 
             className='cursor-pointer'>
                 <AiOutlineMenu size={30}/>
@@ -37,11 +51,12 @@ const Navbar = ({setShow}) => {
         {/* Cart button */}
 
         <button
+                
         onClick={() => setShow(false)} 
-        className='bg-black text-white hidden md:flex items-center py-2 rounded-full'>
-        <BsFillCartFill  size={20} className='mr-2'/> 
+        className='bg-black text-white hidden md:flex items-center py-2 mr-2 rounded-full'>
+        <BsFillCartFill  size={20} className='mr-2'/>             
             Cart    
-            <span className='pl-2 text-red-600'>1</span>        
+            <span className='font-bold border-content mt-[-30px] mr-[-30px] pr-2 box-border rounded-full   bg-red-600 pl-2 text-white'>{size}</span>        
         </button>
         
 
@@ -96,6 +111,7 @@ const Navbar = ({setShow}) => {
 
         </div>
     </div>
+  </>
   )
 }
 
