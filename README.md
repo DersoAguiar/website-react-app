@@ -24,7 +24,6 @@
 ![](https://github.com/DersoAguiar/website-react-app/blob/master/.github/side-bar.gif)
 
 ## Componente de Carrinho
-- Eu mesmo adicinei as funcionalidades de carrinho.
 - Funcionallidades: adicionar produtos, mudar quantidade do produto e deletar produtos;
 - Na tela do carrinho tem o preço e o valor total do carrinho;
 - Caso o usuário clique no carrinho sem adicionar produto, uma mensagem irá aparecer: "Ops, loks like your cart is empty!";
