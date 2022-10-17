@@ -31,7 +31,7 @@
 
 ![](https://github.com/DersoAguiar/website-react-app/blob/master/.github/add-to-cart.gif)
 
-## Fixed Navibar
+## Fixed Navbar
 - a navbar fora fixada no topo utilizando useState e useEffect e addEventListener;
 - ao rolar pelo navegador, a barra ficará fixa no topoe mudará de cor de fundo;
 
